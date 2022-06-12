@@ -1,0 +1,57 @@
+2 mins Intro me, Twilio
+
+** Section 1: BattleSnake (10 mins)
+
+intro battlesnake
+ - what is battlesnake?
+ - how do you play?
+ - game modes: challenges and tournaments
+ - why is mine the okayest?
+
+
+** Section 2: How I built the world's okayest (20 mins)
+
+1. snake design basics
+ - webserver, Spring boot + Java records
+   - at this point we have a functional snake that only moves one direction
+2. now: design choices...
+   - my strat: model how _I_ would play
+    - we have up to 4 choices
+    - rule out impossible choices
+      - if 0 possible choices we're dead
+      - if 1 possible choice take it
+      - if 2+ then weigh each move using a few different strategies (introduce random strat)
+      - choose the one with the highest weight
+    - this works OK but needs more strats
+    - a more advanced strat: floodfill to avoid dead-ends
+      - but we know something about snakes so can modify it
+    - note about concurrency. Everything here is single-threaded, except at a webserver level. No shared data between requests so no synchronisation needed.
+
+    - this works OK but we need more flexibility to have different strats depending on what's going on. add modes for high-level objectives
+        - needing food
+        - being defensive or agressive
+
+    - how to improve this snake?
+      - play real games, study outcomes, look for situations where the snake did something wrong
+        - example: using a* pathing
+          - some recall to advanced floodfill - same technique can apply here
+      - note here about sending SMS for each finished game
+        - how to determine result?
+        - why is this a bad idea?
+    - what is the problem with this approach?
+      - too many edge cases. Just _one more_ if statement
+
+
+** Section 3: How to build a better-than-okay battlesnake (10 mins)
+
+ Monte Carlo
+   - Explain what it is
+   - Simple example: rolling 2 dice
+   - Needs: accurate simluation, good evaluation function, performance, thread management
+
+ Full ML
+   - Never tried but seems cool (find the blog post)
+
+
+** Section 4: _Why_ I built the worlds okayest battlesnake (10 mins)
+

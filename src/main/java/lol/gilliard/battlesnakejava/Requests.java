@@ -1,10 +1,8 @@
 package lol.gilliard.battlesnakejava;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 public class Requests {
 
-    record GameState(
+    public record GameState(
             Game game,
             int turn,
             Board board,
@@ -12,17 +10,17 @@ public class Requests {
     ) {
     }
 
-    record Game(String id,
+    public record Game(String id,
                 Ruleset ruleset,
                 long timeout) {
     }
 
-    record Ruleset(String name,
+    public record Ruleset(String name,
                    String version,
                    Settings settings) {
     }
 
-    record Settings(
+    public record Settings(
             long foodSpawnChance,
             long minimumFood,
             long hazardDamagePerTurn,
@@ -31,23 +29,23 @@ public class Requests {
     ) {
     }
 
-    record Royale(long shrinkEveryNTurns) {
+    public record Royale(long shrinkEveryNTurns) {
     }
 
-    record Squad(boolean allowBodyCollisions,
+    public record Squad(boolean allowBodyCollisions,
                  boolean sharedElimination,
                  boolean sharedHealth,
                  boolean sharedLength) {
     }
 
-    record Board(int height,
+    public record Board(int height,
                  int width,
                  Coord[] food,
                  Battlesnake[] snakes,
                  Coord[] hazards) {
     }
 
-    record Battlesnake(String id,
+    public record Battlesnake(String id,
                        String name,
                        long health,
                        Coord[] body,
@@ -56,9 +54,6 @@ public class Requests {
                        String latency,
                        String shout,
                        String squad) {
-    }
-
-    record Coord(int x, int y) {
     }
 
 }

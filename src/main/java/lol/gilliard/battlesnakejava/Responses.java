@@ -12,10 +12,6 @@ public class Responses {
                                   String version) {
     }
 
-    public enum Direction {
-        up, down, left, right;
-    }
-
     @JsonInclude(JsonInclude.Include.NON_NULL)
     public record Move(Direction move, String shout) {
         public Move(Direction move){
